@@ -3,6 +3,7 @@ from eth_abi import abi
 from eth_contract.common import ContractBound
 from eth_contract import utils
 
+import codecs
 
 def validate_argument(_type, value):
     base, sub, arr_list = abi.process_type(_type)
@@ -87,7 +88,7 @@ class Function(ContractBound):
         prefix = self.encoded_abi_signature
         suffix = self.abi_args_signature(args)
         data = "{0}{1}".format(prefix, suffix)
-        return data.encode('hex')
+        return codecs.encode(data, 'hex')
 
     def __get__(self, obj, type=None):
         if obj is None:
