@@ -88,7 +88,7 @@ class Function(ContractBound):
         prefix = self.encoded_abi_signature
         suffix = self.abi_args_signature(args)
         data = "{0}{1}".format(prefix, suffix)
-        return codecs.encode(data, 'hex')
+        return codecs.encode(data.encode("ascii"), "hex")
 
     def __get__(self, obj, type=None):
         if obj is None:
