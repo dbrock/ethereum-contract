@@ -16,4 +16,4 @@ def clean_args(*args):
 
 
 def sha3(seed):
-    return sha3_256(seed).digest()
+    return sha3_256(seed.encode("utf-8")).digest()
